@@ -4,3 +4,6 @@
 [submodule "Dependencies/GLFW/GLFW"]
 	path = Dependencies/GLFW/GLFW
 	url = https://github.com/glfw/glfw.git
+[submodule "Dependencies/IMGUI/IMGUI"]
+	path = Dependencies/IMGUI/IMGUI
+	url = https://github.com/ocornut/imgui.git

@@ -1,23 +1,9 @@
 project(GLFW VERSION 0.1 LANGUAGES CXX)
 
-# file(GLOB_RECURSE
-#     GLFW_HEADERS
-#     CONFIGURE_DEPENDS
-#     LIST_DIRECTORIES false
-#     ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+option(GLFW_BUILD_EXAMPLES "Build the GLFW example programs" ${GLFW_STANDALONE})
+option(GLFW_BUILD_TESTS "Build the GLFW test programs" ${GLFW_STANDALONE})
+option(GLFW_BUILD_DOCS "Build the GLFW documentation" ON)
+option(GLFW_INSTALL "Generate installation target" ON)
 
-file(GLOB_RECURSE
-    GLFW_SOURCES
-    CONFIGURE_DEPENDS
-    LIST_DIRECTORIES false
-    ${CMAKE_CURRENT_LIST_DIR}/GLFW/src/*.c)
-
-add_library(Glfw SHARED ${GLFW_SOURCES})
-target_include_directories(Glfw 
-    PUBLIC
-	    ${CMAKE_CURRENT_LIST_DIR}/GLFW/include
-    PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/GLFW/src)
-
-# This makes the project importable from the build directory
-export(TARGETS Glfw FILE GlfwConfig.cmake)
+add_subdirectory(GLFW)

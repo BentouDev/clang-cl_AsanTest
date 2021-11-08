@@ -1,5 +1,11 @@
 project(App VERSION 0.1 LANGUAGES CXX)
 
+find_package( OpenGL REQUIRED )
+include_directories( ${OPENGL_INCLUDE_DIRS} )
+
+if(MSVC)
+    SET( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ENTRY:mainCRTStartup" )
+endif()
 file(GLOB_RECURSE
     APP_SOURCES
     CONFIGURE_DEPENDS
@@ -17,9 +23,10 @@ target_include_directories(App
 
 target_link_libraries(App
     PUBLIC
-        Glfw
+        glfw
         Glm
-        Imgui)
+        Imgui
+        ${OPENGL_LIBRARIES})
 
 # This makes the project importable from the build directory
 export(TARGETS App FILE AppConfig.cmake)

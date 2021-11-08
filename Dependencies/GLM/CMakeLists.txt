@@ -1,9 +1,9 @@
 project(GLM VERSION 0.1 LANGUAGES CXX)
 
-add_library(GLM INTERFACE)
+add_library(Glm INTERFACE)
 target_include_directories(Glm
     INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+        ${CMAKE_CURRENT_LIST_DIR}/GLM)
 
 # This makes the project importable from the build directory
 export(TARGETS Glm FILE GlmConfig.cmake)

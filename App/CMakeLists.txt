@@ -16,14 +16,14 @@ add_executable(App ${APP_SOURCES})
 
 target_include_directories(App 
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        ${CMAKE_CURRENT_LIST_DIR}/include
     PRIVATE
-        src)
+        ${CMAKE_CURRENT_LIST_DIR}/src)
 
-target_link_libraries(Core
+target_link_libraries(App
     PUBLIC
         Glfw
-        Glm
+        Glm)
 
 # This makes the project importable from the build directory
 export(TARGETS App FILE AppConfig.cmake)

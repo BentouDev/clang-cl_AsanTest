@@ -1,9 +1,10 @@
 project(GLFW VERSION 0.1 LANGUAGES CXX)
 
-option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
-option(GLFW_BUILD_EXAMPLES "Build the GLFW example programs" ${GLFW_STANDALONE})
-option(GLFW_BUILD_TESTS "Build the GLFW test programs" ${GLFW_STANDALONE})
-option(GLFW_BUILD_DOCS "Build the GLFW documentation" ON)
-option(GLFW_INSTALL "Generate installation target" ON)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL  "GLFW lib only" )
+set(GLFW_INSTALL OFF CACHE BOOL  "GLFW lib only" )
+set(GLFW_BUILD_TESTS OFF CACHE BOOL  "GLFW lib only" )
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL  "GLFW lib only" )
+set(GLFW_INSTALL OFF CACHE BOOL  "GLFW lib only" )
+set(BUILD_SHARED_LIBS OFF CACHE BOOL  "GLFW lib only" )
 
 add_subdirectory(GLFW)

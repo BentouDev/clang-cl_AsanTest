@@ -1,6 +1,6 @@
 # clang-cl_AsanTest
 
-## Project for testing address sanitizer in clang-cl
+### Project for testing address sanitizer in Visual Studio 2022
 
 Run with params:
 ```

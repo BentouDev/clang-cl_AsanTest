@@ -6,6 +6,7 @@ include_directories( ${OPENGL_INCLUDE_DIRS} )
 if(MSVC)
     SET( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ENTRY:mainCRTStartup" )
 endif()
+
 file(GLOB_RECURSE
     APP_SOURCES
     CONFIGURE_DEPENDS
@@ -20,7 +21,7 @@ add_executable(App WIN32
 target_compile_options(App PRIVATE -fsanitize=address) # /MD will be used implicitly
 target_link_directories(App PRIVATE "$ENV{PROGRAMFILES}/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/lib/clang/12.0.0/lib/windows")
 target_link_libraries(App PRIVATE clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64)
-target_link_options(App PRIVATE /wholearchive:clang_rt.asan_dynamic_runtime_thunk-x86_64.lib /DEBUG)
+target_link_options(App PRIVATE /DEBUG)# /wholearchive:clang_rt.asan_dynamic_runtime_thunk-x86_64.lib )
 
 target_include_directories(App 
     PUBLIC

@@ -96,11 +96,6 @@ int main(int, char**)
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    // Test ASAN
-    volatile int* sth = new int;
-    delete sth;
-    *sth = 8;
-
     // Main loop
     while (!glfwWindowShouldClose(window))
     {
@@ -138,6 +133,14 @@ int main(int, char**)
                 counter++;
             ImGui::SameLine();
             ImGui::Text("counter = %d", counter);
+
+            if (ImGui::Button("Write Deleted Memory"))
+            {
+                // Test ASAN
+                volatile int* sth = new int;
+                delete sth;
+                *sth = 8;
+            }
 
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
             ImGui::End();
